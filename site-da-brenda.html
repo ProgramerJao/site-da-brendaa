@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Quer ficar cmg?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      color: #fff;
+    }
+
+    header {
+      background-color: rgba(255, 105, 180, 0.7);
+      padding: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px #ff69b4;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 3em;
+      text-shadow: 2px 2px #ff69b4;
+    }
+
+    .button {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background-color: #ff6f91;
+      color: white;
+    }
+
+    .sure {
+      background-color: #ffc75f;
+      color: white;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 7s linear infinite;
+      opacity: 0.7;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        left: calc(100% * var(--x));
+        opacity: 1;
+      }
+      100% {
+        top: 110%;
+        left: calc(100% * var(--x) + 50px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <header>Para você, Brenda 💖</header>
+
+  <h1>Quer ficar cmg? 💘</h1>
+  <button class="button yes" onclick="responder('Sim')">Sim</button>
+  <button class="button sure" onclick="responder('Com certeza')">Com certeza</button>
+
+  <script>
+    function responder(resposta) {
+      alert("Você escolheu: " + resposta + " 💞 Te adoro, Brenda!");
+    }
+
+    function createHearts() {
+      for (let i = 0; i < 30; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.setProperty('--x', Math.random());
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(heart);
+      }
+    }
+
+    createHearts();
+  </script>
+</body>
+</html>
